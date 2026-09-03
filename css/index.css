@@ -39,6 +39,18 @@
    BODY
    ======================================== */
 
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+}
+
+html {
+    overflow: hidden;
+}
+
 body {
     position: relative;
 
@@ -66,7 +78,7 @@ body {
 
     content: "";
 
-    position: absolute;
+    position: fixed;
     inset: -15%;
 
     background: radial-gradient(
