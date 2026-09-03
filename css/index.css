@@ -1,0 +1,259 @@
+/* ========================================
+   VARIABLES
+   ======================================== */
+
+:root {
+    /* Background */
+    --color-background: #070507;
+    --color-background-soft: #0c0709;
+
+    /* Reds */
+    --color-red-dark: #5c0b20;
+    --color-red: #b5123d;
+    --color-red-bright: #f02d55;
+
+    /* Light */
+    --color-pink-light: #ff8fa3;
+    --color-white: #f5e9ec;
+
+    /* Typography */
+    --font-main: "Poppins", sans-serif;
+
+    /* Layout */
+    --content-width: 700px;
+}
+
+
+/* ========================================
+   RESET
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ========================================
+   BODY
+   ======================================== */
+
+body {
+    position: relative;
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: var(--color-background);
+
+    color: var(--color-white);
+    font-family: var(--font-main);
+
+    overflow: hidden;
+}
+
+
+/* ========================================
+   ATMOSPHERE
+   ======================================== */
+
+   body::before {
+    --glow-x: 35%;
+
+    content: "";
+
+    position: absolute;
+    inset: -15%;
+
+    background: radial-gradient(
+        circle at var(--glow-x) 50%,
+        rgba(181, 18, 61, 0.16) 0%,
+        rgba(181, 18, 61, 0.07) 25%,
+        transparent 60%
+    );
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* ========================================
+   INTRO
+   ======================================== */
+
+.intro {
+    position: relative;
+    z-index: 1;
+
+    width: min(90%, var(--content-width));
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+
+/* ========================================
+   TITLE
+   ======================================== */
+
+.intro h1 {
+    display: flex;
+    justify-content: center;
+
+    color: var(--color-red);
+
+    font-size: clamp(3rem, 10vw, 6rem);
+    font-weight: 700;
+    line-height: 1;
+
+    letter-spacing: 0.08em;
+}
+
+.intro h1 span {
+    display: inline-block;
+}
+
+
+/* ========================================
+   MESSAGE
+   ======================================== */
+
+.message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    max-width: 550px;
+    margin-top: 2rem;
+
+    text-align: center;
+}
+
+
+.message p {
+    line-height: 1.7;
+}
+
+
+/* First line */
+
+.message-main {
+    color: var(--color-pink-light);
+
+    font-size: 1.15rem;
+    font-weight: 400;
+}
+
+
+/* Main message */
+
+.message-secondary {
+    margin-top: 0.15rem;
+
+    color: var(--color-white);
+
+    font-size: 1.05rem;
+    font-weight: 300;
+
+    opacity: 0.9;
+}
+
+
+/* Closing line */
+
+.message-last {
+    margin-top: 1.75rem;
+
+    color: var(--color-pink-light);
+
+    font-size: 1.05rem;
+    font-weight: 400;
+
+    opacity: 0.8;
+}
+
+
+/* ========================================
+   BUTTON
+   ======================================== */
+
+.button {
+    margin-top: 3.8rem;
+    padding: 0.8rem 2rem;
+
+    display: inline-block;
+
+    border: 1px solid var(--color-red);
+
+    color: var(--color-pink-light);
+    background: transparent;
+
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+
+    text-decoration: none;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* ========================================
+   BUTTON - HOVER
+   ======================================== */
+
+.button:hover {
+    transform: translateY(-2px);
+
+    background-color: var(--color-red);
+    color: var(--color-white);
+
+    box-shadow:
+        0 0 12px rgba(240, 45, 85, 0.35),
+        0 0 28px rgba(240, 45, 85, 0.15);
+}
+
+
+/* ========================================
+   BUTTON - ACTIVE
+   ======================================== */
+
+.button:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+    .intro {
+        width: 90%;
+    }
+
+    .message {
+        width: 100%;
+        padding-inline: 0.5rem;
+    }
+
+    .message-main {
+        font-size: 1.05rem;
+    }
+
+    .message-secondary,
+    .message-last {
+        font-size: 1rem;
+    }
+
+    .button {
+        margin-top: 3rem;
+        padding: 0.75rem 1.8rem;
+    }
+}
