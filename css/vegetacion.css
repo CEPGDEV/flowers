@@ -1,0 +1,295 @@
+.vegetation {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 18%;
+
+    height: 70px;
+
+    pointer-events: none;
+    overflow: visible;
+}
+
+.secondary-vegetation {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 18%;
+
+    height: 110px;
+
+    pointer-events: none;
+    overflow: visible;
+}
+
+.vegetation-back {
+    z-index: 1;
+}
+
+.vegetation-front {
+    z-index: 2;
+}
+
+.flower {
+    z-index: 3;
+}
+
+/* ==============================
+   GRUPO DE HIERBA
+   ============================== */
+
+.grass {
+    position: absolute;
+    bottom: 0;
+
+    width: 24px;
+    height: var(--grass-height);
+
+    transform:
+        translateX(-50%)
+        scale(var(--grass-scale))
+        rotate(var(--grass-rotation));
+
+    transform-origin: bottom center;
+}
+
+
+/* ==============================
+   BRIZNAS
+   ============================== */
+
+.grass-blade {
+    position: absolute;
+    bottom: 0;
+
+    width: 4px;
+    height: 100%;
+
+    background: var(--leaf-light);
+
+    border-radius: 100% 0 100% 0;
+
+    transform-origin: bottom center;
+}
+
+
+/* Izquierda */
+
+.blade-left {
+    left: 5px;
+    transform: rotate(-18deg);
+}
+
+
+/* Centro */
+
+.blade-center {
+    left: 10px;
+    height: 85%;
+
+    background: var(--ground-light);
+
+    transform: rotate(0deg);
+}
+
+
+/* Derecha */
+
+.blade-right {
+    left: 15px;
+    height: 90%;
+
+    transform: rotate(18deg);
+}
+
+/* ==============================
+   PEQUEÑAS PLANTAS
+   ============================== */
+
+   .small-plant {
+    position: absolute;
+    bottom: 0;
+
+    width: 34px;
+    height: var(--plant-height);
+
+    transform:
+        translateX(-50%)
+        scale(var(--plant-scale))
+        rotate(var(--plant-rotation));
+
+    transform-origin: bottom center;
+}
+
+
+/* Tallo */
+
+.plant-stem {
+    position: absolute;
+
+    left: 15px;
+    bottom: 0;
+
+    width: 3px;
+    height: 100%;
+
+    background: var(--ground-light);
+
+    border-radius: 2px;
+}
+
+
+/* Hojas */
+
+.plant-leaf {
+    position: absolute;
+
+    width: 15px;
+    height: 8px;
+
+    background: var(--leaf-light);
+
+    border-radius: 100% 0 100% 0;
+
+    transform-origin: bottom center;
+}
+
+
+/* Hoja superior izquierda */
+
+.leaf-left-top {
+    left: 2px;
+    top: 28%;
+
+    transform: rotate(-28deg);
+}
+
+
+/* Hoja superior derecha */
+
+.leaf-right-top {
+    left: 14px;
+    top: 40%;
+
+    background: var(--leaf-mid);
+
+    transform: rotate(28deg);
+}
+
+
+/* Hoja inferior izquierda */
+
+.leaf-left-bottom {
+    left: 1px;
+    top: 62%;
+
+    width: 17px;
+
+    background: var(--leaf-shadow);
+
+    transform: rotate(-32deg);
+}
+
+.secondary-plant {
+    position: absolute;
+    bottom: 0;
+
+    width: 70px;
+    height: var(--secondary-height);
+
+    transform:
+        translateX(-50%)
+        scale(var(--secondary-scale))
+        rotate(var(--secondary-rotation));
+
+    transform-origin: bottom center;
+}
+
+.secondary-stem {
+    position: absolute;
+
+    left: 34px;
+    bottom: 0;
+
+    width: 4px;
+    height: 100%;
+
+    background: var(--ground-light);
+
+    border-radius: 3px;
+}
+
+.secondary-leaf {
+    position: absolute;
+
+    width: 32px;
+height: 14px;
+
+    background: var(--leaf-light);
+
+    border-radius: 100% 0 100% 0;
+
+    transform-origin: bottom center;
+}
+
+.leaf-1 {
+    left: 8px;
+    top: 12%;
+    transform: rotate(-30deg);
+}
+
+.leaf-2 {
+    left: 34px;
+    top: 27%;
+    background: var(--leaf-mid);
+    transform: rotate(30deg);
+}
+
+.leaf-3 {
+    left: 3px;
+    top: 43%;
+    transform: rotate(-35deg);
+}
+
+.leaf-4 {
+    left: 36px;
+    top: 60%;
+    background: var(--leaf-shadow);
+    transform: rotate(35deg);
+}
+
+.leaf-5 {
+    left: 5px;
+    top: 76%;
+    transform: rotate(-25deg);
+}
+
+.vegetation-back {
+    z-index: 1;
+}
+
+.secondary-back {
+    z-index: 2;
+}
+
+.flower {
+    z-index: 3;
+}
+
+.secondary-front {
+    z-index: 4;
+}
+
+.vegetation-front {
+    z-index: 5;
+}
+
+.vegetation-back {
+    opacity: 0.95;
+}
+
+.vegetation-front {
+    opacity: 1;
+}

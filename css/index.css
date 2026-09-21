@@ -236,6 +236,9 @@ body {
         0 0 28px rgba(240, 45, 85, 0.15);
 }
 
+.button:active {
+    transform: translateY(0) scale(0.97);
+}
 
 /* ========================================
    BUTTON - ACTIVE
@@ -268,4 +271,23 @@ body {
         margin-top: 3rem;
         padding: 0.75rem 1.8rem;
     }
+}
+
+.page-transition {
+    position: fixed;
+    inset: 0;
+
+    background: var(--color-background);
+
+    opacity: 0;
+    pointer-events: none;
+
+    z-index: 10;
+
+    transition: opacity 0.8s ease;
+}
+
+.page-transition.is-active {
+    opacity: 1;
+    pointer-events: auto;
 }

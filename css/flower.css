@@ -1,0 +1,768 @@
+/* ========================================
+   RESET
+   ======================================== */
+
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ========================================
+   VARIABLES
+   ======================================== */
+
+:root {
+    --sky-top: #7fa8c4;
+    --sky-bottom: #f0c76a;
+
+    --ground: #18200f;
+    --ground-light: #26351a;
+    --leaf-light: #31451e;
+
+    /* Flor */
+    --flower-back: #dda719;
+    --flower-primary: #f5c52f;
+
+    --flower-light: #ffe99a;
+    --flower-inner: #f8d85a;
+
+    --flower-shadow: #c88b12;
+    --flower-center: #c88b12;
+
+     /* Iluminación */
+    --light-warm: rgba(255, 236, 160, 0.16);
+    --shadow-soft: rgba(72, 50, 10, 0.14);
+
+    /* Vegetación iluminada */
+    --leaf-shadow: #263617;
+    --leaf-mid: #30441c;
+    --leaf-highlight: #3a5122;
+
+    /* Suelo e iluminación ambiental */
+    --ground-deep: #11180b;
+    --ground: #18200f;
+    --ground-light: #26351a;
+
+    --ground-warm: rgba(230, 190, 85, 0.08);
+    --ground-haze: rgba(210, 190, 120, 0.06);
+}
+
+
+/* ========================================
+   PAGE
+   ======================================== */
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+}
+
+body {
+    min-height: 100vh;
+
+    background: #050306;
+
+    font-family: "Poppins", sans-serif;
+}
+
+
+/* ========================================
+   SCENE
+   ======================================== */
+
+   .scene {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse 110% 55% at 50% 92%,
+            rgba(255, 220, 125, 0.20) 0%,
+            rgba(255, 215, 125, 0.10) 35%,
+            transparent 75%
+        ),
+        radial-gradient(
+            ellipse 120% 45% at 50% 58%,
+            rgba(220, 205, 155, 0.10) 0%,
+            transparent 72%
+        ),
+        linear-gradient(
+            to bottom,
+            var(--sky-top) 0%,
+            var(--sky-top) 14%,
+            #8ba8b5 32%,
+            #aeb5a6 52%,
+            #d2c383 73%,
+            var(--sky-bottom) 100%
+        );
+}
+
+
+
+/* ========================================
+   SKY
+   ======================================== */
+
+.sky {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* ========================================
+   HALO AMBIENTAL
+   Detrás de la flor
+   ======================================== */
+
+.sky::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            ellipse 90% 30% at 18% 55%,
+            rgba(255, 255, 255, 0.035),
+            transparent 70%
+        ),
+        radial-gradient(
+            ellipse 85% 35% at 82% 48%,
+            rgba(255, 235, 175, 0.035),
+            transparent 72%
+        );
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   VARIACIÓN ATMOSFÉRICA
+   ======================================== */
+
+.sky::after {
+    content: "";
+    position: absolute;
+
+    left: 50%;
+    bottom: 15%;
+
+    width: 90%;
+    height: 35%;
+
+    transform: translateX(-50%);
+
+    background: radial-gradient(
+        ellipse at center,
+        rgba(255, 220, 125, 0.09),
+        rgba(255, 215, 120, 0.035) 45%,
+        transparent 75%
+    );
+
+    filter: blur(18px);
+    pointer-events: none;
+}
+
+
+/* ========================================
+   GARDEN
+   ======================================== */
+
+.garden {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+/* ========================================
+   GROUND
+   ======================================== */
+
+   .ground {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 18%;
+
+    background:
+        radial-gradient(
+            ellipse 45% 90% at 50% 0%,
+            var(--ground-warm) 0%,
+            var(--ground-haze) 28%,
+            transparent 70%
+        ),
+        linear-gradient(
+            to bottom,
+            var(--ground-light) 0%,
+            var(--ground) 55%,
+            var(--ground-deep) 100%
+        );
+
+    z-index: 1;
+}
+
+.ground::before {
+    content: "";
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: -12%;
+
+    height: 24%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(220, 198, 135, 0.06) 45%,
+            rgba(180, 170, 120, 0.03) 100%
+        );
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   FLOWER
+   ======================================== */
+
+.flower {
+    position: absolute;
+
+    left: 50%;
+    bottom: 18%;
+
+    width: min(30vw, 220px);
+
+    transform: translateX(-50%);
+}
+
+/* ========================================
+   FLOWER CLONES
+   ======================================== */
+.flower-left {
+    left: 39%;
+}
+
+.flower-center {
+    left: 50%;
+}
+
+.flower-right {
+    left: 61%;
+}
+
+/* ========================================
+   FLOWER SVG
+   ======================================== */
+
+.flower-svg {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    overflow: visible;
+
+    filter:
+        drop-shadow(
+            2px 3px 3px var(--shadow-soft)
+        );
+}
+
+
+/* ========================================
+   STEM
+   ======================================== */
+
+.flower-svg .stem {
+    fill: none;
+
+    stroke: var(--ground-light);
+    stroke-width: 7;
+
+    stroke-linecap: round;
+}
+
+
+/* ========================================
+   REFLEJO SUTIL DEL TALLO
+   ======================================== */
+
+.flower-svg .stem-highlight {
+    fill: none;
+
+    stroke: var(--leaf-highlight);
+    stroke-width: 1.8;
+
+    stroke-linecap: round;
+
+    opacity: 0.6;
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   LEAVES
+   ======================================== */
+
+.flower-svg .leaf {
+    stroke: none;
+
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+
+/* ========================================
+   COLOR DE LAS HOJAS
+   ======================================== */
+
+.flower-svg .leaf-left {
+    fill: var(--leaf-mid);
+}
+
+.flower-svg .leaf-right {
+    fill: var(--leaf-highlight);
+}
+
+
+/* ========================================
+   TAMAÑOS / PROFUNDIDAD
+   ======================================== */
+
+.flower-svg .leaf-small {
+    opacity: 0.92;
+}
+
+.flower-svg .leaf-large {
+    opacity: 1;
+}
+
+
+/* ========================================
+   INCLINACIÓN NATURAL
+   ======================================== */
+
+.flower-svg .leaf-upper-left {
+    fill: var(--leaf-highlight);
+    transform: rotate(-3deg);
+}
+
+.flower-svg .leaf-upper-right {
+    fill: var(--leaf-mid);
+    transform: rotate(3deg);
+}
+
+.flower-svg .leaf-lower-left {
+    fill: var(--leaf-mid);
+    transform: rotate(-2deg);
+}
+
+.flower-svg .leaf-lower-right {
+    fill: var(--leaf-shadow);
+    transform: rotate(3deg);
+}
+
+
+/* ========================================
+   DETALLE / NERVADURA DE LAS HOJAS
+   ======================================== */
+
+.flower-svg .leaf-detail {
+    fill: none;
+    stroke: var(--leaf-highlight);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+/* ========================================
+   PETALS
+   ======================================== */
+
+.flower-svg .rose-petal {
+    stroke: none;
+}
+
+
+/* ========================================
+   PETALS BACK
+   ======================================== */
+
+.flower-svg .rose-back {
+    fill: var(--flower-back);
+    filter: brightness(0.97);
+}
+
+
+/* ========================================
+   PETALS SIDE
+   ======================================== */
+
+.flower-svg .rose-side {
+    fill: var(--flower-primary);
+    filter: brightness(1.01);
+}
+
+
+/* ========================================
+   PETALS FRONT
+   ======================================== */
+
+.flower-svg .rose-front {
+    fill: var(--flower-light);
+    filter: brightness(1.02);
+}
+
+
+/* ========================================
+   INNER PETALS
+   ======================================== */
+
+.flower-svg .rose-inner {
+    fill: var(--flower-inner);
+    filter: brightness(0.99);
+}
+
+.flower-svg .rose-inner-light {
+    fill: var(--flower-light);
+    filter: brightness(1.03);
+}
+
+
+/* ========================================
+   SOFT SHADOW
+   ======================================== */
+
+.flower-svg .rose-shadow-shape {
+    fill: var(--flower-shadow);
+
+    opacity: 0.32;
+}
+
+
+/* ========================================
+   STAMENS
+   ======================================== */
+
+.flower-svg .rose-stamen {
+    fill: none;
+
+    stroke: var(--flower-shadow);
+    stroke-width: 2;
+
+    stroke-linecap: round;
+
+    opacity: 0.8;
+}
+
+
+/* ========================================
+   CENTER
+   ======================================== */
+
+.flower-svg .rose-center {
+    fill: var(--flower-shadow);
+}
+
+.flower-svg .rose-center-light {
+    fill: var(--flower-light);
+}
+
+
+/* ========================================
+   SEPALS
+   ======================================== */
+
+   .flower-svg .rose-sepal {
+    fill: var(--leaf-light);
+}
+
+.flower-svg .rose-sepal-left {
+    filter: brightness(1.08);
+}
+
+.flower-svg .rose-sepal-right {
+    filter: brightness(0.92);
+}
+
+/* ========================================
+   FLOWER LEFT
+   ======================================== */
+.flower-left .flower-svg {
+    transform: scale(0.82) rotate(-6deg);
+    transform-origin: 50% 100%;
+}
+
+.flower-left .rose-head {
+    transform-origin: 80px 108px;
+    transform: scaleX(0.92);
+}
+
+/* ========================================
+   FLOWER RIGHT
+   ======================================== */
+.flower-right .flower-svg {
+    transform: scale(0.88) rotate(6.2deg);
+    transform-origin: 50% 100%;
+}
+
+.flower-right .rose-head {
+    transform-origin: 80px 108px;
+    transform: scaleX(0.96);
+}
+
+.lyrics {
+    position: absolute;
+
+    top: 50%;
+    left: 8%;
+
+    width: min(28vw, 320px);
+
+    transform:
+        translateY(-50%)
+        translateX(-14px)
+        scale(0.98);
+
+    text-align: right;
+
+    font-size: clamp(1rem, 1.5vw, 1.35rem);
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: 0.025em;
+
+    color: rgba(92, 11, 32, 0.96);
+
+text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.32),
+    0 0 14px rgba(255, 190, 120, 0.18);
+
+    opacity: 0;
+    filter: blur(4px);
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.45s ease,
+        transform 0.55s ease,
+        filter 0.55s ease,
+        color 1.5s ease,
+        text-shadow 1.5s ease;
+
+    z-index: 10;
+}
+
+.lyrics::after {
+    content: "";
+
+    display: block;
+
+    width: 45px;
+    height: 1px;
+
+    margin-top: 11px;
+    margin-left: auto;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        currentColor
+    );
+
+    opacity: 0.35;
+
+    transition:
+        width 0.45s ease,
+        opacity 0.45s ease;
+}
+
+.lyrics.is-visible {
+    opacity: 1;
+
+    transform:
+        translateY(-50%)
+        translateX(0)
+        scale(1);
+
+    filter: blur(0);
+}
+
+.lyrics.is-visible::after {
+    width: 68px;
+    opacity: 0.5;
+}
+
+.lyrics.is-right {
+    left: auto;
+    right: 8%;
+
+    text-align: left;
+}
+
+.lyrics.is-right::after {
+    margin-left: 0;
+    margin-right: auto;
+
+    background: linear-gradient(
+        90deg,
+        currentColor,
+        transparent
+    );
+}
+
+@media (max-width: 700px) {
+    .lyrics {
+        left: 4%;
+        width: min(38vw, 180px);
+
+        font-size: clamp(0.85rem, 3.2vw, 1.05rem);
+    }
+
+    .lyrics.is-right {
+        right: 4%;
+        left: auto;
+    }
+}
+
+.night-overlay {
+    position: absolute;
+    inset: 0;
+
+    z-index: 7;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(17, 27, 58, 0.48),
+            rgba(9, 15, 24, 0.72)
+        );
+
+    transition: opacity 12s ease;
+}
+
+
+/* Estrellas */
+
+.night-overlay::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    opacity: 0;
+
+    background:
+        radial-gradient(
+            circle at 12% 18%,
+            rgba(255, 255, 255, 0.8) 0 1px,
+            transparent 1.6px
+        ),
+        radial-gradient(
+            circle at 27% 11%,
+            rgba(255, 255, 255, 0.7) 0 1px,
+            transparent 1.6px
+        ),
+        radial-gradient(
+            circle at 43% 23%,
+            rgba(255, 255, 255, 0.65) 0 1px,
+            transparent 1.6px
+        ),
+        radial-gradient(
+            circle at 61% 13%,
+            rgba(255, 255, 255, 0.75) 0 1px,
+            transparent 1.6px
+        ),
+        radial-gradient(
+            circle at 82% 21%,
+            rgba(255, 255, 255, 0.8) 0 1px,
+            transparent 1.6px
+        ),
+        radial-gradient(
+            circle at 91% 9%,
+            rgba(255, 255, 255, 0.65) 0 1px,
+            transparent 1.6px
+        );
+
+    transition: opacity 8s ease 3s;
+}
+
+
+/* Luna */
+
+.night-overlay::after {
+    content: "";
+
+    position: absolute;
+
+    top: 11%;
+    right: 14%;
+
+    width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 246, 218, 0.95);
+
+    box-shadow:
+        0 0 18px rgba(255, 246, 218, 0.3),
+        0 0 45px rgba(180, 200, 255, 0.18);
+
+    opacity: 0;
+
+    transform: scale(0.8);
+
+    transition:
+        opacity 6s ease 2s,
+        transform 8s ease 2s;
+}
+
+
+/* Activación nocturna */
+
+.scene.is-night .night-overlay {
+    opacity: 1;
+}
+
+.scene.is-night .night-overlay::before {
+    opacity: 1;
+}
+
+.scene.is-night .night-overlay::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.scene.is-night .lyrics {
+    color: rgba(232, 235, 255, 0.95);
+
+    text-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.55),
+        0 0 18px rgba(190, 205, 255, 0.18);
+}

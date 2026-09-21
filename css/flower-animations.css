@@ -1,0 +1,483 @@
+/* ========================================
+   CRECIMIENTO DEL TALLO
+   ======================================== */
+
+   .flower-svg .stem,
+   .flower-svg .stem-highlight {
+       stroke-dasharray: 1;
+       stroke-dashoffset: 1;
+   }
+   
+   .scene.is-growing .flower-svg .stem,
+   .scene.is-growing .flower-svg .stem-highlight {
+       animation: growStem 2.4s ease-out forwards;
+       animation-delay: var(--growth-delay, 0s);
+   }
+   
+   
+   /* ========================================
+      DELAY DE CADA FLOR
+      ======================================== */
+   
+   .flower-left {
+       --growth-delay: 0.45s;
+   }
+   
+   .flower-center {
+       --growth-delay: 0s;
+   }
+   
+   .flower-right {
+       --growth-delay: 0.75s;
+   }
+   
+   
+   /* ========================================
+      ANIMACIÓN DEL TALLO
+      ======================================== */
+   
+   @keyframes growStem {
+       from {
+           stroke-dashoffset: 1;
+       }
+   
+       to {
+           stroke-dashoffset: 0;
+       }
+   }
+   
+   
+   /* ========================================
+      APARICIÓN DE LAS HOJAS
+      ======================================== */
+   
+   .flower-svg .leaf-upper-left,
+   .flower-svg .leaf-upper-right,
+   .flower-svg .leaf-lower-left,
+   .flower-svg .leaf-lower-right,
+   .flower-svg .leaf-detail {
+       opacity: 0;
+       transform-box: fill-box;
+   }
+   
+   
+   /* ========================================
+      ORIGEN DE CADA HOJA
+      ======================================== */
+   
+   .flower-svg .leaf-upper-left,
+   .flower-svg .leaf-lower-left {
+       transform-origin: right center;
+   }
+   
+   .flower-svg .leaf-upper-right,
+   .flower-svg .leaf-lower-right {
+       transform-origin: left center;
+   }
+   
+   
+   /* ========================================
+      CRECIMIENTO DE LAS HOJAS
+      ======================================== */
+   
+   .scene.is-growing .flower-svg .leaf-upper-left {
+       animation: growLeafLeft 0.8s ease-out forwards;
+       animation-delay: calc(var(--growth-delay, 0s) + 2s);
+   }
+   
+   .scene.is-growing .flower-svg .leaf-upper-right {
+       animation: growLeafRight 0.8s ease-out forwards;
+       animation-delay: calc(var(--growth-delay, 0s) + 2.15s);
+   }
+   
+   .scene.is-growing .flower-svg .leaf-lower-left {
+       animation: growLeafLeft 0.8s ease-out forwards;
+       animation-delay: calc(var(--growth-delay, 0s) + 2.3s);
+   }
+   
+   .scene.is-growing .flower-svg .leaf-lower-right {
+       animation: growLeafRight 0.8s ease-out forwards;
+       animation-delay: calc(var(--growth-delay, 0s) + 2.45s);
+   }
+   
+   
+   /* ========================================
+      ANIMACIONES DE CRECIMIENTO
+      ======================================== */
+   
+   @keyframes growLeafLeft {
+       from {
+           opacity: 0;
+           transform: scaleX(0);
+       }
+   
+       to {
+           opacity: 1;
+           transform: scaleX(1);
+       }
+   }
+   
+   @keyframes growLeafRight {
+       from {
+           opacity: 0;
+           transform: scaleX(0);
+       }
+   
+       to {
+           opacity: 1;
+           transform: scaleX(1);
+       }
+   }
+   
+   
+   /* ========================================
+      APERTURA DE LA FLOR
+      ======================================== */
+   
+   .flower-svg .rose-back,
+   .flower-svg .rose-side,
+   .flower-svg .rose-front,
+   .flower-svg .rose-inner-light,
+   .flower-svg .rose-inner,
+   .flower-svg .rose-shadow-shape,
+   .flower-svg .rose-stamen,
+   .flower-svg .rose-center,
+   .flower-svg .rose-center-light {
+       transform-box: fill-box;
+   }
+   
+   
+   /* ========================================
+      SÉPALOS
+      ======================================== */
+   
+   .flower-svg .rose-sepal {
+       opacity: 0;
+       transform-box: fill-box;
+       transform-origin: center bottom;
+   }
+   
+   .flower-svg .rose-back,
+   .flower-svg .rose-side,
+   .flower-svg .rose-front,
+   .flower-svg .rose-inner-light,
+   .flower-svg .rose-inner,
+   .flower-svg .rose-shadow-shape {
+       opacity: 0;
+   }
+   
+   .flower-svg .rose-back,
+   .flower-svg .rose-side,
+   .flower-svg .rose-front,
+   .flower-svg .rose-inner-light,
+   .flower-svg .rose-inner,
+   .flower-svg .rose-shadow-shape {
+       transform-origin: center center;
+   }
+   
+   
+   .scene.is-growing .flower-svg .rose-back {
+       animation: openPetal 0.9s ease-out forwards;
+       animation-delay: calc(var(--growth-delay, 0s) + 3.35s);
+   }
+   
+   .scene.is-growing .flower-svg .rose-side {
+       animation: openPetal 0.8s ease-out forwards;
+       animation-delay: calc(var(--growth-delay, 0s) + 3.55s);
+   }
+   
+   .scene.is-growing .flower-svg .rose-front {
+       animation: openPetal 0.8s ease-out forwards;
+       animation-delay: calc(var(--growth-delay, 0s) + 3.75s);
+   }
+   
+   
+   @keyframes openPetal {
+       from {
+           opacity: 0;
+           transform: scale(0.15);
+       }
+   
+       to {
+           opacity: 1;
+           transform: scale(1);
+       }
+   }
+   
+   
+   .scene.is-growing .flower-svg .rose-sepal {
+       animation: appearSepal 0.55s ease-out forwards;
+       animation-delay: calc(var(--growth-delay, 0s) + 3.25s);
+   }
+   
+   @keyframes appearSepal {
+       from {
+           opacity: 0;
+           transform: scaleY(0.3);
+       }
+   
+       to {
+           opacity: 1;
+           transform: scaleY(1);
+       }
+   }
+   
+   
+   /* ========================================
+      CENTRO DE LA FLOR
+      ======================================== */
+   
+   .flower-svg .rose-inner-light,
+   .flower-svg .rose-inner,
+   .flower-svg .rose-shadow-shape,
+   .flower-svg .rose-stamen,
+   .flower-svg .rose-center,
+   .flower-svg .rose-center-light {
+       opacity: 0;
+       transform-box: fill-box;
+       transform-origin: center center;
+   }
+   
+   
+   .scene.is-growing .flower-svg .rose-inner-light {
+       animation: appearFlowerInner 0.65s ease-out forwards;
+       animation-delay: calc(var(--growth-delay, 0s) + 3.95s);
+   }
+   
+   .scene.is-growing .flower-svg .rose-inner {
+       animation: appearFlowerInner 0.65s ease-out forwards;
+       animation-delay: calc(var(--growth-delay, 0s) + 4.05s);
+   }
+   
+   .scene.is-growing .flower-svg .rose-shadow-shape {
+       animation: appearFlowerInner 0.6s ease-out forwards;
+       animation-delay: calc(var(--growth-delay, 0s) + 4.1s);
+   }
+   
+   
+   @keyframes appearFlowerInner {
+       from {
+           opacity: 0;
+           transform: scale(0.7);
+       }
+   
+       to {
+           opacity: 1;
+           transform: scale(1);
+       }
+   }
+   
+   
+   .scene.is-growing .flower-svg .rose-stamen {
+       animation: appearStamen 0.45s ease-out forwards;
+       animation-delay: calc(var(--growth-delay, 0s) + 4.35s);
+   }
+   
+   
+   @keyframes appearStamen {
+       from {
+           opacity: 0;
+           transform: scale(0);
+       }
+   
+       to {
+           opacity: 1;
+           transform: scale(1);
+       }
+   }
+   
+   
+   .scene.is-growing .flower-svg .rose-center,
+   .scene.is-growing .flower-svg .rose-center-light {
+       animation: appearFlowerCenter 0.5s ease-out forwards;
+       animation-delay: calc(var(--growth-delay, 0s) + 4.5s);
+   }
+   
+   
+   @keyframes appearFlowerCenter {
+       from {
+           opacity: 0;
+           transform: scale(0);
+       }
+   
+       70% {
+           opacity: 1;
+           transform: scale(1.08);
+       }
+   
+       to {
+           opacity: 1;
+           transform: scale(1);
+       }
+   }
+   
+   
+   /* ========================================
+      MOVIMIENTO AMBIENTAL — HOJA
+      ======================================== */
+   
+   /*
+      is-alive se activa después de que termina
+      el crecimiento. Por eso esta animación
+      puede tomar el control del transform.
+   */
+   
+   .scene.is-alive .flower-svg .leaf-upper-left {
+       opacity: 1;
+       transform-origin: right center;
+       animation: leafSwayLeft 5s ease-in-out infinite;
+   }
+   
+   
+   @keyframes leafSwayLeft {
+       0% {
+           transform: scaleX(1) rotate(-1.5deg);
+       }
+   
+       50% {
+           transform: scaleX(1) rotate(1.5deg);
+       }
+   
+       100% {
+           transform: scaleX(1) rotate(-1.5deg);
+       }
+   }
+
+   /* ========================================
+   MOVIMIENTO AMBIENTAL — HOJAS
+   ======================================== */
+
+.scene.is-alive .flower-svg .leaf-upper-right {
+    opacity: 1;
+    transform-origin: left center;
+    animation: leafSwayRight 6s ease-in-out infinite;
+}
+
+.scene.is-alive .flower-svg .leaf-lower-left {
+    opacity: 1;
+    transform-origin: right center;
+    animation: leafSwayLeftSlow 6.5s ease-in-out infinite;
+}
+
+.scene.is-alive .flower-svg .leaf-lower-right {
+    opacity: 1;
+    transform-origin: left center;
+    animation: leafSwayRightSlow 7s ease-in-out infinite;
+}
+
+
+/* ========================================
+   MOVIMIENTOS
+   ======================================== */
+
+@keyframes leafSwayRight {
+    0% {
+        transform: scaleX(1) rotate(0deg);
+    }
+
+    50% {
+        transform: scaleX(1) rotate(1.5deg);
+    }
+
+    100% {
+        transform: scaleX(1) rotate(0deg);
+    }
+}
+
+@keyframes leafSwayLeftSlow {
+    0% {
+        transform: scaleX(1) rotate(0deg);
+    }
+
+    50% {
+        transform: scaleX(1) rotate(-1.2deg);
+    }
+
+    100% {
+        transform: scaleX(1) rotate(0deg);
+    }
+}
+
+@keyframes leafSwayRightSlow {
+    0% {
+        transform: scaleX(1) rotate(0deg);
+    }
+
+    50% {
+        transform: scaleX(1) rotate(1.1deg);
+    }
+
+    100% {
+        transform: scaleX(1) rotate(0deg);
+    }
+}
+
+/* ========================================
+   MOVIMIENTO AMBIENTAL — FLORES
+   ======================================== */
+
+   .scene.is-alive .flower-motion {
+    transform-origin: center bottom;
+    animation: flowerSway 8s ease-in-out infinite;
+}
+
+@keyframes flowerSway {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(0.7deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* ========================================
+   RESPIRACIÓN DE LA LUZ AMBIENTAL
+   ======================================== */
+
+   .scene.is-alive .sky::after {
+    animation: atmosphericGlow 10s ease-in-out infinite;
+}
+
+@keyframes atmosphericGlow {
+    0% {
+        opacity: 0.65;
+        transform: translateX(-50%) scale(0.96);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.04);
+    }
+
+    100% {
+        opacity: 0.65;
+        transform: translateX(-50%) scale(0.96);
+    }
+}
+
+/* ========================================
+   VARIACIÓN LENTA DE LA ILUMINACIÓN
+   ======================================== */
+
+   .scene.is-alive .sky::before {
+    animation: ambientLightShift 14s ease-in-out infinite;
+}
+
+@keyframes ambientLightShift {
+    0% {
+        opacity: 0.65;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.65;
+    }
+}
