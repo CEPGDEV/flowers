@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Para ti</title>
+    <link rel="stylesheet" href="css/flower.css">
+    <link rel="stylesheet" href="css/flower-animations.css">
+    <link rel="stylesheet" href="css/vegetacion.css">
+</head>
+
+
+<body>
+    <audio
+    id="music"
+    src="sources/badromance.mp3"
+    preload="auto"
+></audio>
+
+    <main class="scene">
+        <div class="lyrics" id="lyrics" aria-live="polite"></div>
+        <!-- ========================================
+             CIELO / ATMÓSFERA
+             ======================================== -->
+
+        <div class="sky"></div>
+
+
+        <div class="garden">
+
+
+            <!-- ========================================
+                 PLANTILLA DE LA FLOR
+                 ======================================== -->
+
+            <template id="flower-template">
+                <svg
+                    class="flower-svg"
+                    viewBox="0 0 160 360"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                >
+
+
+                    <!-- ==================================
+                         TALLO
+                         ================================== -->
+
+                    <path
+                         class="stem"
+                         pathLength="1"
+                         d="
+                             M77 360
+                             C83 250, 79 180, 80 112
+                         "
+                     />
+
+
+                    <!-- Reflejo sutil del tallo -->
+
+                    <path
+    class="stem-highlight"
+    pathLength="1"
+    d="
+        M75.8 358
+        C80.9 250, 77.9 180, 78.7 114
+    "
+/>
+
+
+                    <!-- ==================================
+                         HOJAS DEL TALLO
+                         ================================== -->
+
+
+                    <!-- Hoja superior izquierda -->
+
+                    <path
+                        class="leaf leaf-left leaf-small leaf-upper-left"
+                        d="
+                            M79 185
+
+                            C70 176, 60 174, 51 180
+                            C57 188, 68 192, 79 185
+
+                            Z
+                        "
+                    />
+
+                    <path
+                        class="leaf-detail"
+                        d="
+                            M77 185
+                            C68 183, 60 181, 54 181
+                        "
+                    />
+
+
+                    <!-- Hoja superior derecha -->
+
+                    <path
+                        class="leaf leaf-right leaf-small leaf-upper-right"
+                        d="
+                            M81 215
+
+                            C90 205, 101 204, 111 210
+                            C104 219, 92 221, 81 215
+
+                            Z
+                        "
+                    />
+
+                    <path
+                        class="leaf-detail"
+                        d="
+                            M83 215
+                            C92 213, 101 211, 108 211
+                        "
+                    />
+
+
+                    <!-- Hoja inferior izquierda -->
+
+                    <path
+                        class="leaf leaf-left leaf-large leaf-lower-left"
+                        d="
+                            M77 258
+
+                            C63 243, 45 239, 31 249
+                            C42 263, 60 268, 77 258
+
+                            Z
+                        "
+                    />
+
+                    <path
+                        class="leaf-detail"
+                        d="
+                            M75 258
+                            C61 254, 48 250, 36 250
+                        "
+                    />
+
+
+                    <!-- Hoja inferior derecha -->
+
+                    <path
+                        class="leaf leaf-right leaf-large leaf-lower-right"
+                        d="
+                            M79 302
+
+                            C94 287, 114 285, 130 297
+                            C117 311, 98 315, 79 302
+
+                            Z
+                        "
+                    />
+
+                    <path
+                        class="leaf-detail"
+                        d="
+                            M81 302
+                            C96 299, 111 298, 126 299
+                        "
+                    />
+
+
+                    <!-- ========================================
+                         CABEZA DE LA FLOR
+                         ======================================== -->
+
+                    <g class="rose-head">
+
+
+                        <!-- =====================================
+                             PÉTALO TRASERO SUPERIOR
+                             ===================================== -->
+
+                        <path
+                            class="rose-petal rose-back"
+                            d="
+                                M80 88
+
+                                C69 78, 61 66, 62 53
+                                C63 42, 70 35, 80 35
+
+                                C90 35, 97 42, 98 53
+                                C99 66, 91 78, 80 88
+
+                                Z
+                            "
+                        />
+
+
+                        <!-- =====================================
+                             PÉTALO TRASERO SUPERIOR IZQUIERDO
+                             ===================================== -->
+
+                        <path
+                            class="rose-petal rose-back"
+                            d="
+                                M78 91
+
+                                C66 82, 51 75, 43 64
+                                C36 55, 38 45, 46 40
+
+                                C54 35, 63 38, 70 46
+                                C76 54, 79 66, 78 91
+
+                                Z
+                            "
+                        />
+
+
+                        <!-- =====================================
+                             PÉTALO TRASERO SUPERIOR DERECHO
+                             ===================================== -->
+
+                        <path
+                            class="rose-petal rose-back"
+                            d="
+                                M82 91
+
+                                C94 82, 109 75, 117 64
+                                C124 55, 122 45, 114 40
+
+                                C106 35, 97 38, 90 46
+                                C84 54, 81 66, 82 91
+
+                                Z
+                            "
+                        />
+
+
+                        <!-- =====================================
+                             PÉTALO LATERAL IZQUIERDO
+                             ===================================== -->
+
+                        <path
+                            class="rose-petal rose-side"
+                            d="
+                                M79 108
+
+                                C65 107, 48 103, 36 96
+                                C24 89, 19 79, 22 69
+
+                                C25 59, 35 54, 46 56
+                                C58 58, 69 67, 75 78
+
+                                C80 88, 81 99, 79 108
+
+                                Z
+                            "
+                        />
+
+
+                        <!-- =====================================
+                             PÉTALO LATERAL DERECHO
+                             ===================================== -->
+
+                        <path
+                            class="rose-petal rose-side"
+                            d="
+                                M81 108
+
+                                C95 107, 112 103, 124 96
+                                C136 89, 141 79, 138 69
+
+                                C135 59, 125 54, 114 56
+                                C102 58, 91 67, 85 78
+
+                                C80 88, 79 99, 81 108
+
+                                Z
+                            "
+                        />
+
+
+                        <!-- =====================================
+                             PÉTALO FRONTAL IZQUIERDO
+                             ===================================== -->
+
+                        <path
+                            class="rose-petal rose-front"
+                            d="
+                                M80 112
+
+                                C68 109, 57 103, 50 94
+                                C44 86, 45 76, 51 69
+
+                                C57 62, 67 62, 75 68
+
+                                C83 74, 84 89, 80 112
+
+                                Z
+                            "
+                        />
+
+
+                        <!-- =====================================
+                             PÉTALO FRONTAL DERECHO
+                             ===================================== -->
+
+                        <path
+                            class="rose-petal rose-front"
+                            d="
+                                M80 112
+
+                                C92 109, 103 103, 110 94
+                                C116 86, 115 76, 109 69
+
+                                C103 62, 93 62, 85 68
+
+                                C77 74, 76 89, 80 112
+
+                                Z
+                            "
+                        />
+
+
+                        <!-- =====================================
+                             CUENCO CENTRAL
+                             ===================================== -->
+
+                        <path
+                            class="rose-petal rose-inner-light"
+                            d="
+                                M80 111
+
+                                C71 106, 64 99, 62 91
+                                C60 83, 64 76, 71 73
+
+                                C77 70, 80 74, 80 79
+
+                                C80 74, 83 70, 89 73
+
+                                C96 76, 100 83, 98 91
+
+                                C96 99, 89 106, 80 111
+
+                                Z
+                            "
+                        />
+
+
+                        <!-- =====================================
+                             SEGUNDA CAPA DEL CUENCO
+                             ===================================== -->
+
+                        <path
+                            class="rose-petal rose-inner"
+                            d="
+                                M80 104
+
+                                C74 100, 69 95, 68 89
+                                C67 83, 70 79, 75 78
+
+                                C79 77, 80 81, 80 85
+
+                                C80 81, 81 77, 85 78
+
+                                C90 79, 93 83, 92 89
+
+                                C91 95, 86 100, 80 104
+
+                                Z
+                            "
+                        />
+
+
+                        <!-- =====================================
+                             SOMBRA SUAVE INFERIOR
+                             ===================================== -->
+
+                        <path
+                            class="rose-shadow-shape"
+                            d="
+                                M61 91
+
+                                C67 101, 75 107, 80 111
+                                C85 107, 93 101, 99 91
+
+                                C95 98, 88 103, 80 105
+                                C72 103, 65 98, 61 91
+
+                                Z
+                            "
+                        />
+
+
+                        <!-- =====================================
+                             ESTAMBRES
+                             ===================================== -->
+
+                        <path
+                            class="rose-stamen"
+                            d="
+                                M80 91
+                                C75 87, 72 84, 70 80
+                            "
+                        />
+
+                        <path
+                            class="rose-stamen"
+                            d="
+                                M80 91
+                                C85 87, 88 84, 90 80
+                            "
+                        />
+
+
+                        <!-- =====================================
+                             CENTRO
+                             ===================================== -->
+
+                        <ellipse
+                            class="rose-center"
+                            cx="80"
+                            cy="94"
+                            rx="4"
+                            ry="3"
+                        />
+
+                        <circle
+                            class="rose-center-light"
+                            cx="80"
+                            cy="93"
+                            r="1.4"
+                        />
+
+
+                        <!-- =====================================
+                             SÉPALOS
+                             ===================================== -->
+
+                             <path
+    class="rose-sepal rose-sepal-left"
+    d="
+        M80 110
+        C76 108, 71 108, 67 110
+        C64 112, 62 115, 61 118
+        C67 117, 73 116, 80 113
+        Z
+    "
+/>
+
+<path
+    class="rose-sepal rose-sepal-right"
+    d="
+        M80 110
+        C84 108, 89 108, 93 110
+        C96 112, 98 115, 99 118
+        C93 117, 87 116, 80 113
+        Z
+    "
+/>
+
+                    </g>
+
+                </svg>
+            </template>
+
+            <div class="vegetation vegetation-back"></div>
+
+            <div class="secondary-vegetation secondary-back"></div>
+            <!-- ========================================
+                 FLOR IZQUIERDA
+                 ======================================== -->
+
+            <div class="flower flower-left"></div>
+
+
+            <!-- ========================================
+                 FLOR CENTRAL
+                 ======================================== -->
+
+            <div class="flower flower-center"></div>
+
+
+            <!-- ========================================
+                 FLOR DERECHA
+                 ======================================== -->
+
+            <div class="flower flower-right">
+                <!-- Flor futura -->
+            </div>
+
+            <div class="secondary-vegetation secondary-front"></div>
+
+            <div class="vegetation vegetation-front"></div>
+
+            <!-- ========================================
+                 SUELO
+                 ======================================== -->
+
+            <div class="ground"></div>
+
+        </div>
+        <div class="night-overlay"></div>
+    </main>
+
+
+    <script src="script/flower.js"></script>
+    <script src="script/flower-clone.js"></script>
+    <script src="script/vegetacion.js"></script>
+    <script src="script/lyrics.js"></script>
+</body>
+
+</html>
